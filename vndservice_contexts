@@ -1,67 +1,33 @@
+#line 1 "system/sepolicy/flagging/flagging_macros"
+####################################
+# is_flag_enabled(flag, rules)
+# SELinux rules which apply only if given feature is turned on
+
+
+####################################
+# is_flag_disabled(flag, rules)
+# SELinux rules which apply only if given feature is turned off
+
+
+####################################
+# starting_at_board_api(api_level, rules_if_api_level)
+#
+# This macro conditionally exposes SELinux rules ensuring they are available
+# only when the board API level is at or above the specified 'api_level'.
+
+
+####################################
+# until_board_api(api_level, rules_if_lower_api_level)
+#
+# This macro conditionally exposes SELinux rules ensuring they are available
+# only when the board API level is below the specified 'api_level'.
+
+#line 1 "out/soong/.intermediates/system/sepolicy/contexts/vndservice_contexts/android_common/canoe/newline"
+
 #line 1 "system/sepolicy/vendor/vndservice_contexts"
 manager                 u:object_r:service_manager_vndservice:s0
 *                       u:object_r:default_android_vndservice:s0
-#line 1 "out/soong/.intermediates/system/sepolicy/contexts/vndservice_contexts/android_common/gen/newline"
-
-#line 1 "vendor/oplus/system/sepolicy/ossi_generic/vendor/vndservice_contexts"
-###############################################################################
-## Copyright 2017 OPLUS Mobile Comm Corp., Ltd.
-## 
-## File: hwservice_contexts
-## Description : add for vndservice
-## Version: 1.0
-## Date : 2017/11/10
-## Author:Hongbo.dai@Camera,for support AndroidO remsoaic
-################################################################################
-
-#ifdef OPLUS_FEATURE_DISPLAY_PANEL
-#lisheng@MULTIMEDIA.DISPLAY.LCD, 2020/07/23, add for hidl test service
-dp.service u:object_r:dp_service:s0
-# Shaw@MULTIMEDIA.DISPLAY.LCD, 2023/5/20 Add for displaypanel Aidl
-dpa.service u:object_r:dpa_service:s0
-#endif
-
-#ifdef OPLUS_FEATURE_TP_BASIC
-#Xuhang.Li@OPLUS.BSP.TP, 2023/01/06, add for touch dameon binder
-touchDeamonBinder u:object_r:touchDeamonBinder_service:s0
-#endif
-
-vendor.goodix.hardware.biometrics.fingerprint::IGoodixFingerprintDaemon u:object_r:goodix_fingerprint_vndservice:s0
-vendor.goodix.hardware.biometrics.fingerprint::IGoodixFingerprintDaemonExt u:object_r:goodix_fingerprint_vndservice:s0
-vendor.goodix.hardware.biometrics.fingerprint::IGoodixFingerprintDaemonHbd u:object_r:goodix_fingerprint_vndservice:s0
-vendor.goodix.hardware.biometrics.fingerprint::IGoodixFingerprintDaemonFido u:object_r:goodix_fingerprint_vndservice:s0
-
-#line 1 "out/soong/.intermediates/system/sepolicy/contexts/vndservice_contexts/android_common/gen/newline"
-
-#line 1 "vendor/oplus/system/sepolicy/ossi_qcom/vendor/vndservice_contexts"
-###############################################################################
-## Copyright 2017 OPLUS Mobile Comm Corp., Ltd.
-## 
-## File: hwservice_contexts
-## Description : add for vndservice
-## Version: 1.0
-## Date : 2017/11/10
-## Author:Hongbo.dai@Camera,for support AndroidO remsoaic
-################################################################################
-
-#ifdef 
-#oppo hongbo.dai@Camera add for AdnroidO remosaic
-android.samsung.IRemosaicDaemon                u:object_r:oppo_remosaic_service:s0
-#Feng.Hu@Camera.Driver 20171121 add for oppoalgo_daemon
-android.OPPO.IOppoAlgoDaemon                   u:object_r:oppoalgo_service:s0
-
-#Gaoyuan@Camera.Driver 20200908 add for remosaic_daemon
-android.IRemosaicDaemon                u:object_r:oppo_remosaic_service:s0
-#endif
-
-# chao.hu, 2020/06/04, add for OPlus extcamera HAL
-#ifdef OPLUS_FEATURE_TV_VOIP
-vendor.oplus.camera_stream            u:object_r:extcamera_service:s0
-vendor.oplus.audio_stream             u:object_r:extcamera_service:s0
-#endif
-
-
-#line 1 "out/soong/.intermediates/system/sepolicy/contexts/vndservice_contexts/android_common/gen/newline"
+#line 1 "out/soong/.intermediates/system/sepolicy/contexts/vndservice_contexts/android_common/canoe/newline"
 
 #line 1 "device/qcom/sepolicy_vndr/generic/vendor/common/vndservice_contexts"
 # Copyright (c) 2018, The Linux Foundation. All rights reserved.
@@ -91,12 +57,11 @@ vendor.oplus.audio_stream             u:object_r:extcamera_service:s0
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 display.qservice                        u:object_r:vendor_qdisplay_service:s0
-display.oemservice                      u:object_r:vendor_oemdisplay_service:s0
 featenab_client.service                 u:object_r:vendor_qfeatenab_client_service:s0
 vendor.qcom.PeripheralManager           u:object_r:vendor_per_mgr_service:s0
 vendor.qti.gnss.xtra.ILocAidlXtraService  u:object_r:vendor_xtra_service:s0
-vendor.qti.data.qmsservice.IQmsService  u:object_r:vendor_qms_service:s0
-#line 1 "out/soong/.intermediates/system/sepolicy/contexts/vndservice_contexts/android_common/gen/newline"
+vendor.qsap.mpamsvc                     u:object_r:vendor_qsap_mpamsvc_service:s0
+#line 1 "out/soong/.intermediates/system/sepolicy/contexts/vndservice_contexts/android_common/canoe/newline"
 
 #line 1 "device/qcom/sepolicy_vndr/qva/vendor/common/vndservice_contexts"
 # Copyright (c) 2019 The Linux Foundation. All rights reserved.
@@ -132,5 +97,65 @@ wfd.native.mm.service                          u:object_r:vendor_wfdnativemm_ser
 wfdhdcpvndservice                              u:object_r:vendor_wfdhdcpvndservice_service:s0
 #QTR SDK
 vendor_qtrsdkservice                           u:object_r:vendor_qtrsdkservice_service:s0
-#line 1 "out/soong/.intermediates/system/sepolicy/contexts/vndservice_contexts/android_common/gen/newline"
+#line 1 "out/soong/.intermediates/system/sepolicy/contexts/vndservice_contexts/android_common/canoe/newline"
+
+#line 1 "vendor/oplus/system/sepolicy/ossi_generic/vendor/vndservice_contexts"
+###############################################################################
+## Copyright 2017 OPLUS Mobile Comm Corp., Ltd.
+## 
+## File: hwservice_contexts
+## Description : add for vndservice
+## Version: 1.0
+## Date : 2017/11/10
+## Author:Hongbo.dai@Camera,for support AndroidO remsoaic
+################################################################################
+
+#ifdef OPLUS_FEATURE_DISPLAY_PANEL
+#lisheng@MULTIMEDIA.DISPLAY.LCD, 2020/07/23, add for hidl test service
+dp.service u:object_r:dp_service:s0
+# Shaw@MULTIMEDIA.DISPLAY.LCD, 2023/5/20 Add for displaypanel Aidl
+dpa.service u:object_r:dpa_service:s0
+#endif
+
+#ifdef OPLUS_FEATURE_TP_BASIC
+#Xuhang.Li@OPLUS.BSP.TP, 2023/01/06, add for touch dameon binder
+touchDeamonBinder u:object_r:touchDeamonBinder_service:s0
+#endif
+
+vendor.goodix.hardware.biometrics.fingerprint::IGoodixFingerprintDaemon u:object_r:goodix_fingerprint_vndservice:s0
+vendor.goodix.hardware.biometrics.fingerprint::IGoodixFingerprintDaemonExt u:object_r:goodix_fingerprint_vndservice:s0
+vendor.goodix.hardware.biometrics.fingerprint::IGoodixFingerprintDaemonHbd u:object_r:goodix_fingerprint_vndservice:s0
+vendor.goodix.hardware.biometrics.fingerprint::IGoodixFingerprintDaemonFido u:object_r:goodix_fingerprint_vndservice:s0
+
+#line 1 "out/soong/.intermediates/system/sepolicy/contexts/vndservice_contexts/android_common/canoe/newline"
+
+#line 1 "vendor/oplus/system/sepolicy/ossi_qcom/vendor/vndservice_contexts"
+###############################################################################
+## Copyright 2017 OPLUS Mobile Comm Corp., Ltd.
+## 
+## File: hwservice_contexts
+## Description : add for vndservice
+## Version: 1.0
+## Date : 2017/11/10
+## Author:Hongbo.dai@Camera,for support AndroidO remsoaic
+################################################################################
+
+#ifdef 
+#oppo hongbo.dai@Camera add for AdnroidO remosaic
+android.samsung.IRemosaicDaemon                u:object_r:oppo_remosaic_service:s0
+#Feng.Hu@Camera.Driver 20171121 add for oppoalgo_daemon
+android.OPPO.IOppoAlgoDaemon                   u:object_r:oppoalgo_service:s0
+
+#Gaoyuan@Camera.Driver 20200908 add for remosaic_daemon
+android.IRemosaicDaemon                u:object_r:oppo_remosaic_service:s0
+#endif
+
+# chao.hu, 2020/06/04, add for OPlus extcamera HAL
+#ifdef OPLUS_FEATURE_TV_VOIP
+vendor.oplus.camera_stream            u:object_r:extcamera_service:s0
+vendor.oplus.audio_stream             u:object_r:extcamera_service:s0
+#endif
+
+
+#line 1 "out/soong/.intermediates/system/sepolicy/contexts/vndservice_contexts/android_common/canoe/newline"
 
